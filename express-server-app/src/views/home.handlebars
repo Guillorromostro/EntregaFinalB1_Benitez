@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home - Productos</title>
+</head>
+<body>
+    <h1>Lista de Productos</h1>
+    <form method="get" action="/">
+        <label>Categoría:
+            <input type="text" name="category" value="{{category}}" />
+        </label>
+        <label>Disponibilidad:
+            <select name="available">
+                <option value="">Todas</option>
+                <option value="true" {{#if (eq available "true")}}selected{{/if}}>Disponible</option>
+                <option value="false" {{#if (eq available "false")}}selected{{/if}}>No disponible</option>
+            </select>
+        </label>
+        <label>Orden por precio:
+            <select name="sort">
+                <option value="">Sin orden</option>
+                <option value="asc" {{#if (eq sort "asc")}}selected{{/if}}>Ascendente</option>
+                <option value="desc" {{#if (eq sort "desc")}}selected{{/if}}>Descendente</option>
+            </select>
+        </label>
+        <label>Cantidad por página:
+            <input type="number" name="limit" min="1" value="{{limit}}" />
+        </label>
+        <button type="submit">Filtrar</button>
+    </form>
+    {{#if products.length}}
+        <ul>
+            {{#each products}}
+                <div>
+                    <h3>
+                        <a href="/products/{{id}}">{{title}}</a>
+                    </h3>
+                    <p>{{description}}</p>
+                    <form method="POST" action="/carts/1/products/{{id}}">
+                        <button type="submit">Agregar al carrito</button>
+                    </form>
+                </div>
+            {{/each}}
+        </ul>
+        <div>
+            {{#if (gt page 1)}}
+                <a href="?page={{dec page}}&limit={{limit}}{{#if category}}&category={{category}}{{/if}}{{#if available}}&available={{available}}{{/if}}{{#if sort}}&sort={{sort}}{{/if}}">Anterior</a>
+            {{/if}}
+            Página {{page}} de {{totalPages}}
+            {{#if (lt page totalPages)}}
+                <a href="?page={{inc page}}&limit={{limit}}{{#if category}}&category={{category}}{{/if}}{{#if available}}&available={{available}}{{/if}}{{#if sort}}&sort={{sort}}{{/if}}">Siguiente</a>
+            {{/if}}
+        </div>
+    {{else}}
+        <p>No hay productos para mostrar.</p>
+    {{/if}}
+</body>
+</html>

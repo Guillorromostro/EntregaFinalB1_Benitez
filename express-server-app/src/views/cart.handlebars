@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Carrito</title>
+</head>
+<body>
+    <h1>Carrito</h1>
+    <h2>Carrito #{{cart.id}}</h2>
+    {{#if message}}
+      <p style="color:red">{{message}}</p>
+    {{else}}
+      {{#if cart.products.length}}
+        <ul>
+          {{#each cart.products}}
+            <li>
+              <strong>{{this.product.title}}</strong> - Cantidad: {{this.quantity}}
+              <form method="POST" action="/carts/{{../cart.id}}/products/{{this.product.id}}?_method=DELETE" style="display:inline;">
+                <button type="submit">Eliminar</button>
+              </form>
+            </li>
+          {{/each}}
+        </ul>
+      {{else}}
+        <p>El carrito está vacío.</p>
+      {{/if}}
+    {{/if}}
+    <a href="/">Volver</a>
+</body>
+</html>

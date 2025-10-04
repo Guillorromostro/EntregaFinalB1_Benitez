@@ -1,0 +1,18 @@
+{
+  "name": "express-server-app",
+  "version": "1.0.0",
+  "description": "Un servidor Express simple para gestionar productos y carritos de compras.",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^8.0.3",
+    "method-override": "^3.0.0",
+    "mongoose": "^8.19.0",
+    "socket.io": "^4.8.1"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detalle de Producto</title>
+</head>
+<body>
+    <h1>{{product.title}}</h1>
+    <p><strong>Descripción:</strong> {{product.description}}</p>
+    <p><strong>Precio:</strong> ${{product.price}}</p>
+    <p><strong>Categoría:</strong> {{product.category}}</p>
+    <p><strong>Stock:</strong> {{product.stock}}</p>
+    <p><strong>Status:</strong> {{product.status}}</p>
+    <button onclick="addToCart('{{product.id}}')">Agregar al carrito</button>
+    <script>
+        function addToCart(productId) {
+            fetch(`/carts/1/products/${productId}`, { method: 'POST' })
+                .then(res => {
+                    if (res.ok) {
+                        alert('Producto agregado al carrito!');
+                    } else {
+                        alert('No se pudo agregar el producto.');
+                    }
+                });
+        }
+    </script>
+    <a href="/">Volver</a>
+</body>
+</html>

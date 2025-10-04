@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "title": "Mouse inalámbrico",
+    "description": "Mouse óptico inalámbrico, ergonómico.",
+    "code": "MOUSE123",
+    "price": 1200,
+    "status": "disponible",
+    "stock": 10,
+    "category": "accesorios",
+    "thumbnails": []
+  },
+  {
+    "id": 2,
+    "title": "Teclado mecánico",
+    "description": "Teclado mecánico retroiluminado.",
+    "code": "KEY456",
+    "price": 3500,
+    "status": "disponible",
+    "stock": 5,
+    "category": "accesorios",
+    "thumbnails": []
+  }
+]
